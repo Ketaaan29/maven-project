@@ -1,1 +1,18 @@
-Hi
+pipeline {
+agent any 
+stages
+{ stage ('my first job to print')
+  {steps {sh 'echo hello_jenkins'}}
+
+ stage ('building the job')
+  {steps {sh 'echo code_is_building'}}
+
+ stage ('deply artifactory')
+  {steps {sh 'echo code_is_depoying'}}
+
+stage ('sonar analysis')
+{ steps {withSonarQubeEnv(credentialsId: 'sonar') {
+    sh 'sonar:sonar'
+} }}
+ }
+}
