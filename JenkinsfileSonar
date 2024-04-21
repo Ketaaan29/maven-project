@@ -11,7 +11,7 @@ stages
   {steps {sh 'echo code_is_depoying'}}
 
 stage ('sonar analysis')
-{ steps {withSonarQubeEnv(credentialsId: 'sonar') {
+{ steps {withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar') {
     sh 'sonar:sonar'
 } }}
  }
